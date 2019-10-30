@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots" : ["./types", "node_modules/@types"],
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -17,6 +18,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "types/*": [
+        "types/*"
       ]
     },
     "lib": [
@@ -31,7 +35,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
