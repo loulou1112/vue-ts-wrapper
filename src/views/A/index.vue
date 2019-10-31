@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>A</h1>
+  <div class="a-container">
+    <h1 class="a-title">A</h1>
     <button @click="inputArr.push(1)">增加input</button>
     <ul>
       <li v-for="(item, index) in inputArr" :key="index">

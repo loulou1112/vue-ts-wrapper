@@ -1,4 +1,4 @@
-# vue-ts-wrapper
+# vue-ts-wrapper(push)
 
 ### 特殊目录/文件介绍
 

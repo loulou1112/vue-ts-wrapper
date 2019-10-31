@@ -10,6 +10,7 @@ export declare namespace $api {
 declare global {
   interface ProjectConfig {
     views: string[]
+    request?: string
   }
 }
 
