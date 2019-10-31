@@ -35,7 +35,6 @@ export function enhanceRouter(router: VueRouter) {
 
   router.beforeEach((to, from, next) => {
     isBack(to.name) ? cachedViews.pop(to.name) : cachedViews.push(to.name)
-    console.log(cachedViews)
     next()
   })
 }
