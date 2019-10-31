@@ -13,9 +13,9 @@ module.exports = {
       }
     },
     externals: {
-      vue: 'Vue',
-      'vue-router': 'VueRouter',
-      vuex: 'Vuex'
+      // vue: 'Vue',
+      // 'vue-router': 'VueRouter',
+      // vuex: 'Vuex'
     },
     plugins: [
       new UglifyJsPlugin({
