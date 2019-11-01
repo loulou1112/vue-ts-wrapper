@@ -4,4 +4,6 @@ import { Vue, Component } from 'vue-property-decorator'
 })
 export default class B extends Vue {
   private inputArr = []
+
+  created() {}
 }

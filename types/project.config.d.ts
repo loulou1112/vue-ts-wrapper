@@ -5,4 +5,7 @@ declare global {
     views: string[]
     requestConfig?: AxiosRequestConfig
   }
+  interface Vue {
+    $api: any
+  }
 }

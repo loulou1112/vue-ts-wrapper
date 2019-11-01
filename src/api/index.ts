@@ -2,10 +2,27 @@ import Vue from 'vue'
 import service from './request'
 import cmds from './cmds'
 
-let $api: Record<string, any> = {}
+const env: string = process.env.VUE_APP_ENV
+
+let $api: Record<string, Function> = {}
+
+// data: ['PUT', 'POST', 'PATCH']
+// params: ['GET']
 
 Object.keys(cmds).forEach((cmdName) => {
-  let methods = service.defaults.method || 'POST'
-  // tslint:disable-next-line
-  // $api[cmdName] = () => service({ cmd: })
+  $api[cmdName] = (data: any) => {
+    const methods: string | undefined = service.defaults.method
+    let options: Record<string, any> = {}
+    if (!methods) return
+    const newData = {
+      ...data,
+      cmd: env === 'mock' ? cmds[cmdName].mock : cmds[cmdName].cmd
+    }
+    methods.toLocaleLowerCase() === 'get' ? (options.params = newData) : (options.data = newData)
+    return service(options)
+  }
 })
+
+Vue.prototype.$api = $api
+
+export default $api

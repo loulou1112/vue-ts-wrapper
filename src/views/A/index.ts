@@ -3,7 +3,7 @@ import { Vue, Component } from 'vue-property-decorator'
 @Component({
   name: 'A'
 })
-export default class Home extends Vue {
+export default class A extends Vue {
   private form: AType.AddForm = {
     username: '',
     password: ''
@@ -12,8 +12,8 @@ export default class Home extends Vue {
   private value = ''
 
   private created() {
-    // this.popAlert()
     this.value = JSON.stringify(process.env)
+    this.$api.getUserInfo()
   }
 
   private inputArr = []

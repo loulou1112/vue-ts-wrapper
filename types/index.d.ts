@@ -1,7 +1,7 @@
-/// <reference path="./project.config.d.ts" />
+import Vue from 'vue'
 
 declare module 'vue/type/vue' {
   interface Vue {
-    $form: {}
+    $api: any
   }
 }
