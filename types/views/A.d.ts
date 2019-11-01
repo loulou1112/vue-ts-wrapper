@@ -1,5 +1,6 @@
-import { $api } from '../index'
-interface AddForm {
-  username: string
-  password: string
+declare namespace AType {
+  interface AddForm {
+    username: string
+    password: string
+  }
 }

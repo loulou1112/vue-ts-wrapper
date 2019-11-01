@@ -35,4 +35,19 @@ const properties: ProjectConfig = {
 
 export default properties
 ```
+### 二、路由缓存
 
+每一次前进就会对页面进行一次缓存，后退就会卸载掉缓存。也可以通过页面自己的 json 配置中的`keepAlive` 单独做配置控制是否保活，只能是布尔类型。
+此外，`enhanceRouter.ts` 还提供了 `redirect` 功能，会卸载掉之前所有的保活和路由记录。`this.$router.redirect(Rawlocation)`
+
+```html
+<!-- `$cachedViews`变量是 `src/libs/enhanceRouter.ts` 提供 -->
+<div id="app">
+  <keep-alive :include="$cachedViews">
+    <router-view />
+  </keep-alive>
+</div>
+```
+
+### 三、ts 教程
+#### 3.1 .d.ts 部分规则

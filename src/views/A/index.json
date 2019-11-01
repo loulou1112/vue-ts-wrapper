@@ -1,7 +1,4 @@
 {
-  "route": {
-    "meta": {
-      "title": "标题"
-    }
-  }
+  "title": "标题",
+  "keepAlive": false
 }

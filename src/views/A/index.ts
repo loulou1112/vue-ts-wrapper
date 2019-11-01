@@ -4,9 +4,16 @@ import { Vue, Component } from 'vue-property-decorator'
   name: 'A'
 })
 export default class Home extends Vue {
+  private form: AType.AddForm = {
+    username: '',
+    password: ''
+  }
+
+  private value = ''
+
   private created() {
-    // console.log(this.$router.redirect('/B'))
-    // console.log(this.$form)
+    // this.popAlert()
+    this.value = JSON.stringify(process.env)
   }
 
   private inputArr = []

@@ -1,8 +1,24 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const tsImportPluginFactory = require('ts-import-plugin')
 
+let plugins = [new LodashModuleReplacementPlugin()]
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          drop_debugger: true,
+          drop_console: true
+        }
+      }
+    })
+  )
+}
+process.env.VUE_APP_ENV = process.argv[4]
 module.exports = {
   productionSourceMap: false,
+  parallel: false,
   devServer: {
     port: 8888
   },
@@ -12,22 +28,7 @@ module.exports = {
         types: './types'
       }
     },
-    externals: {
-      // vue: 'Vue',
-      // 'vue-router': 'VueRouter',
-      // vuex: 'Vuex'
-    },
-    plugins: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            drop_debugger: true,
-            drop_console: true
-          }
-        }
-      }),
-      new LodashModuleReplacementPlugin()
-    ]
+    plugins
   },
   chainWebpack(config) {
     config.module
@@ -42,6 +43,22 @@ module.exports = {
             plugins: ['lodash']
           }
         }
+        return options
+      })
+
+    config.module
+      .rule('ts')
+      .use('ts-loader')
+      .tap((options) => {
+        options.getCustomTransformers = () => ({
+          before: [
+            tsImportPluginFactory({
+              libraryName: 'vant',
+              libraryDirectory: 'es',
+              style: (name) => `${name}/style/index`
+            })
+          ]
+        })
         return options
       })
   }

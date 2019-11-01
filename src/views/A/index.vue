@@ -1,6 +1,7 @@
 <template>
   <div class="a-container">
     <h1 class="a-title">A</h1>
+    <h2>{{ value }}</h2>
     <button @click="inputArr.push(1)">增加input</button>
     <ul>
       <li v-for="(item, index) in inputArr" :key="index">
@@ -8,6 +9,8 @@
       </li>
     </ul>
     <h2 @click="$router.push('/b')">to B by click</h2>
+    <van-button type="primary">按钮</van-button>
+    <HelloWorld></HelloWorld>
     <div>
       <router-link to="/A">A</router-link>
       <router-link to="/B">B</router-link>
