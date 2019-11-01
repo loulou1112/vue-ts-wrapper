@@ -3,6 +3,7 @@
     "typeRoots" : ["./types", "node_modules/@types"],
     "target": "esnext",
     "module": "esnext",
+    "noImplicitThis": true,
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,

@@ -1,11 +1,12 @@
-import { AxiosRequestConfig } from 'axios'
+// declare module {
 
-declare global {
-  interface ProjectConfig {
-    views: string[]
-    requestConfig?: AxiosRequestConfig
-  }
-  interface Vue {
-    $api: any
-  }
+interface ProjectConfig {
+  views: string[]
+  baseURL?: string
+  networkTimeout?: NetworkTimeout
 }
+
+interface NetworkTimeout {
+  request?: number
+}
+// }

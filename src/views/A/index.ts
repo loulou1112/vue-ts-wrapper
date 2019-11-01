@@ -4,16 +4,16 @@ import { Vue, Component } from 'vue-property-decorator'
   name: 'A'
 })
 export default class A extends Vue {
-  private form: AType.AddForm = {
+  private form: any = {
     username: '',
     password: ''
   }
 
   private value = ''
 
-  private created() {
+  created() {
     this.value = JSON.stringify(process.env)
-    this.$api.getUserInfo()
+    this.$service.getUserInfo({ username: { name: 123 } })
   }
 
   private inputArr = []
