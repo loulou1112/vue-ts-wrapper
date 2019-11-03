@@ -1,11 +1,4 @@
-import Vue from 'vue'
-
-export interface API {
+interface API {
+  getName(data: { username: Record<string, number> }): Promise<any>
   getUserInfo(data: { username: Record<string, number> }): Promise<any>
-}
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $service: API
-  }
 }
