@@ -1,8 +1,8 @@
 import { Vue, Component } from 'vue-property-decorator'
 @Component({
-  name: 'B'
+  name: 'BView'
 })
-export default class B extends Vue {
+export default class BView extends Vue {
   private inputArr = []
 
   created() {}

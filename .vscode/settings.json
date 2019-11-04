@@ -5,6 +5,12 @@
   "[typescript]": {
     "editor.formatOnSave": false
   },
+  "[scss]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
     "javascript",
@@ -17,5 +23,13 @@
       "autoFix": true
     }
   ],
-  "vetur.format.defaultFormatter.html": "prettier"
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "printWidth": 120,
+      "tabWidth": 2,
+      "semi": false,
+      "singleQuote": true,
+    }
+  }
 }

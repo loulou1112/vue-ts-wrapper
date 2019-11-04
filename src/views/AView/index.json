@@ -1,0 +1,6 @@
+{
+  "title": "标题",
+  "keepAlive": false,
+  "disableScroll": true,
+  "enablePullDownRefresh": true
+}

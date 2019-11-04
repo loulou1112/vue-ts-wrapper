@@ -9,11 +9,11 @@ const baseURL: Record<string, string> = {
 
 const properties: ProjectConfig = {
   // 页面路径，在views内的才能被读取
-  views: ['A/index', 'B/index', 'C/index', 'D/index'],
+  views: ['AView/index', 'BView/index', 'CView/index', 'DView/index'],
   // 请求基本路径(可选)
   baseURL: baseURL[env],
   networkTimeout: {
-    request: 10000
+    request: 30000
   }
 }
 

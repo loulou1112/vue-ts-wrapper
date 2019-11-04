@@ -34,7 +34,12 @@ export function enhanceRouter(router: VueRouter) {
   })
 
   router.beforeEach((to, from, next) => {
-    isBack(to.name) ? cachedViews.pop(to.name) : cachedViews.push(to.name)
+    const keepAlive = to.meta.keepAlive
+    if (typeof keepAlive === 'boolean') {
+      keepAlive && cachedViews.push(to.name)
+    } else {
+      isBack(to.name) ? cachedViews.pop(to.name) : cachedViews.push(to.name)
+    }
     next()
   })
 }

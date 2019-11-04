@@ -22,10 +22,8 @@ service.interceptors.response.use((config) => {
   return config
 })
 
-// 用于判断是否为 mock 环境
-const env: string = process.env.VUE_APP_ENV
-
 export default (data: any, cmd: number, mock: string) => {
-  data.cmd = env === 'mock' ? mock : cmd
+  // 用于判断是否为 mock 环境
+  data.cmd = process.env.VUE_APP_ENV === 'mock' ? mock : cmd
   return service.post('/', data)
 }

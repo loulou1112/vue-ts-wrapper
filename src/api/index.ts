@@ -1,5 +1,4 @@
 import service from './request'
-import './api'
 
 export default class Service implements API {
   getName(data: { username: Record<string, number> }): Promise<any> {

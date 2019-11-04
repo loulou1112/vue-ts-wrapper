@@ -1,5 +1,4 @@
 import { RouteConfig } from 'vue-router'
-import { merge } from 'lodash'
 import projectConfig from '@/project.config'
 import { firstLowerCase } from '@/utils'
 
@@ -30,10 +29,12 @@ let routes: RouteConfig[] = views.map((view: string) => {
     name,
     component: () => import(`@/views/${view}.vue`),
     meta: {
-      title: name
+      title: name,
+      ...config
     }
   }
-  return merge(routerOptions, config.route || {})
+
+  return routerOptions
 })
 
 routes.unshift({

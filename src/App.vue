@@ -1,30 +1,19 @@
 <template>
   <div id="app">
-    <keep-alive :include="$cachedViews">
-      <router-view />
-    </keep-alive>
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh" :disabled="$route.meta.enablePullDownRefresh !== true">
+      <keep-alive :include="$cachedViews">
+        <router-view />
+      </keep-alive>
+    </van-pull-refresh>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import appMixins from './libs/index'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+@Component({
+  mixins: [...appMixins]
+})
+export default class App extends Vue {}
+</script>
