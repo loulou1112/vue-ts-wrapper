@@ -1,28 +1,25 @@
-import VueInstance from 'vue'
-import { Vue, Component, Provide } from 'vue-property-decorator'
-// 注意1: 在 `types/appMixins` 下声明全局对象身上的属性 gc
-// 注意2: 想赋予 vue拥有的方法
+import { Vue, Component } from 'vue-property-decorator'
+// 步骤1: 在 `types/appMixins` 下声明全局对象身上的属性 gc
+// 步骤2: 在 `libs/index.ts` 初始化注册
+// 步骤3: 在当前 mixin 中写操作函数等
+// 步骤4: 在 `当前mixin` 中到 created 周期中注册操作到 全局对象`gc`中
 declare module 'vue/types/vue' {
   interface Vue {
     onPullDownRefresh?(): void
-    startPullDownRefresh?(): void
-    stopPullDownRefresh?(): void
   }
 }
 
 @Component({})
 export default class PullDown extends Vue {
   isLoading: boolean = false
-  beforeCreate() {
-    // 注意3: 赋予gc实例真正的方法
-    VueInstance.prototype._startPullDownRefresh = this.startPullDownRefresh
-    VueInstance.prototype._stopPullDownRefresh = this.stopPullDownRefresh
+  pullDownConfig: PullDownConfig = {}
+  created() {
+    window.gc.startPullDownRefresh = this.startPullDownRefresh
+    window.gc.stopPullDownRefresh = this.stopPullDownRefresh
   }
-  @Provide()
   startPullDownRefresh() {
     this.isLoading = true
   }
-  @Provide()
   stopPullDownRefresh() {
     this.isLoading = false
   }

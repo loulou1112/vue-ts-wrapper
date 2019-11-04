@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh" :disabled="$route.meta.enablePullDownRefresh !== true">
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh" v-bind="pullDownConfig">
       <keep-alive :include="$cachedViews">
         <router-view />
       </keep-alive>

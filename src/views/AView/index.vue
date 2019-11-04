@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { Vue, Component, Inject } from 'vue-property-decorator'
-import { UserForm } from './define'
+import { UserForm } from './index'
 
 @Component({
   name: 'AView'
@@ -38,15 +38,10 @@ export default class AView extends Vue {
     password: '',
     remark: ''
   }
-  beforeCreate() {
-    console.log(133333)
-  }
-  @Inject()
-  stopPullDownRefresh: any
 
   onPullDownRefresh() {
     setTimeout(() => {
-      this.stopPullDownRefresh()
+      window.gc.stopPullDownRefresh()
     }, 1000)
   }
 
