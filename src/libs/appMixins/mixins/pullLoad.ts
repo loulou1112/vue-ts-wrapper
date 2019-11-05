@@ -8,14 +8,15 @@ declare module 'vue/types/vue' {
     onPullDownRefresh?(): void
   }
 }
+export var globalConfig: any = {}
 
 @Component({})
 export default class PullDown extends Vue {
   isLoading: boolean = false
   pullDownConfig: PullDownConfig = {}
   created() {
-    window.gc.startPullDownRefresh = this.startPullDownRefresh
-    window.gc.stopPullDownRefresh = this.stopPullDownRefresh
+    globalConfig.startPullDownRefresh = this.startPullDownRefresh
+    globalConfig.stopPullDownRefresh = this.stopPullDownRefresh
   }
   startPullDownRefresh() {
     this.isLoading = true

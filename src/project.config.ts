@@ -8,6 +8,7 @@ const baseURL: Record<string, string> = {
 }
 
 const properties: ProjectConfig = {
+  title: '全局title',
   // 页面路径，在views内的才能被读取
   views: ['AView/index', 'BView/index', 'CView/index', 'DView/index'],
   // 请求基本路径(可选)

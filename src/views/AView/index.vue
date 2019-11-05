@@ -41,7 +41,7 @@ export default class AView extends Vue {
 
   onPullDownRefresh() {
     setTimeout(() => {
-      window.gc.stopPullDownRefresh()
+      gc.stopPullDownRefresh()
     }, 1000)
   }
 

@@ -73,11 +73,11 @@ export default properties
 
 
 
-### 三、ts 教程
+### 五、ts 教程
 
 > 关于 TS 的基本操作，查看[官网文档](https://www.tslang.cn/docs/home.html)即可。
 
-### 四、vue-property-decorator
+### 六、vue-property-decorator
 
 ts中使用vue的写法，可以直接参照文档。
 

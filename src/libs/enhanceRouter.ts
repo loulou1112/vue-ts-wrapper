@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter, { RawLocation } from 'vue-router'
 import { extend } from 'lodash'
+import config from '@/project.config'
+
+const globelTitle = config.title
 
 type ErrorHandler = (err: Error) => void
 /**
@@ -40,6 +43,7 @@ export function enhanceRouter(router: VueRouter) {
     } else {
       isBack(to.name) ? cachedViews.pop(to.name) : cachedViews.push(to.name)
     }
+    document.title = to.meta.title || globelTitle
     next()
   })
 }

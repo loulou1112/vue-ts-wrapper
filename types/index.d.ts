@@ -11,9 +11,10 @@ declare global {
   interface API {}
 
   interface ProjectConfig {
-    views: string[]
-    baseURL?: string
-    networkTimeout?: NetworkTimeout
+    title: string // 全局标题名称
+    views: string[] // 所有页面
+    baseURL?: string // 请求url
+    networkTimeout?: NetworkTimeout // 超时时间
   }
 
   interface NetworkTimeout {

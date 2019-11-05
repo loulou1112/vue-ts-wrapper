@@ -1,8 +1,11 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const tsImportPluginFactory = require('ts-import-plugin')
+const webpack = require('webpack')
+const path = require('path')
 
 let plugins = [new LodashModuleReplacementPlugin()]
+
 if (process.env.NODE_ENV === 'production') {
   plugins.push(
     new UglifyJsPlugin({
@@ -31,6 +34,7 @@ module.exports = {
     plugins
   },
   chainWebpack(config) {
+    // lodash 按需加载
     config.module
       .rule('ts')
       .use('babel-loader')
@@ -45,7 +49,7 @@ module.exports = {
         }
         return options
       })
-
+    // vant 样式按需加载
     config.module
       .rule('ts')
       .use('ts-loader')
@@ -61,5 +65,11 @@ module.exports = {
         })
         return options
       })
+    // 增加全局变量
+    config.plugin('provide').use(webpack.ProvidePlugin, [
+      {
+        gc: path.resolve(__dirname, './src/libs/appMixins/index.ts')
+      }
+    ])
   }
 }
